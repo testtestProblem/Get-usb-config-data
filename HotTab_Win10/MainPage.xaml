@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="HotTab_Win10.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HotTab_Win10"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button  x:Name="calc_btn"   Margin="497,130,0,0" VerticalAlignment="Top" Click="calc_btn_Click" Height="58" Width="117" Visibility="Collapsed">
+            <TextBlock Visibility="Collapsed">calculate<LineBreak/>in sideload app</TextBlock>
+        </Button>
+        <TextBlock x:Name="puse_textBox" HorizontalAlignment="Left" Margin="572,72,0,0" Text="+" TextWrapping="Wrap" VerticalAlignment="Top" Width="33" Visibility="Collapsed"/>
+        <TextBox x:Name="a_textBlock" HorizontalAlignment="Left" Margin="492,68,0,0" Text="10" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <TextBox x:Name="b_textBlock" HorizontalAlignment="Left" Margin="612,68,0,0" Text="20" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <TextBlock x:Name="equal_textBox" HorizontalAlignment="Left" Margin="692,72,0,0" Text="=" TextWrapping="Wrap" VerticalAlignment="Top" Width="33" Visibility="Collapsed"/>
+        <TextBox x:Name="ans_textBox" HorizontalAlignment="Left" Margin="733,45,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Height="100" Visibility="Collapsed"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="502,227,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"/>
+
+
+        <TextBlock x:Name="data_textBlock" HorizontalAlignment="Left" Margin="122,89,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="refresh_btn" Content="Refrash" Margin="35,85,0,0" VerticalAlignment="Top" Click="refresh_btn_Click"/>
+    </Grid>
+</Page>
