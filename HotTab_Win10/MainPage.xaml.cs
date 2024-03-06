@@ -94,7 +94,12 @@ namespace HotTab_Win10
             });*/
             await this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>     //I don't know this code
             {
-                data_textBlock.Text = s_a;
+                string[] data = s_a.Split("\r\n\r\n");
+
+                PnPmanager_textBlock.Text = data[0];
+                USB_textBlock.Text = data[1];
+                ComPorts_textBlock.Text = data[2];
+                TotalCount_textBlock.Text = data[3];
             });
         }
 
@@ -155,7 +160,14 @@ namespace HotTab_Win10
             //tbResult.Text = "";
             foreach (string key in response.Message.Keys)
             {
-                data_textBlock.Text = (string)response.Message[key];
+                //data_textBlock.Text = (string)response.Message[key];
+                string responseData = (string)response.Message[key];
+                string[] data = responseData.Split("\r\n\r\n");
+
+                PnPmanager_textBlock.Text = data[0];
+                USB_textBlock.Text = data[1];
+                ComPorts_textBlock.Text = data[2];
+                TotalCount_textBlock.Text = data[3];
             }
         }
         private void refresh_btn_Click(object sender, RoutedEventArgs e)

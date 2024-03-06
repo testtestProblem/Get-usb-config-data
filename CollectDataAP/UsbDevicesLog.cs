@@ -127,6 +127,7 @@ namespace CollectDataAP
                                       name = n.GetPropertyValue("Name"),
                                       PNP = n.GetPropertyValue("pnpdeviceid")
                                   };
+                s_USBdevicesLog += "Network adapter:\r\n";
                 foreach (var n in networkList)
                 {
                     DeviceIDTemp = Convert.ToString(n.PNP + "\r\n");              //找出PNPDeviceID的資料
@@ -134,7 +135,7 @@ namespace CollectDataAP
                     {
                         RFcount++;
                         //textBox1.Text += "Name ：" + n.name.ToString() + "\r\n\r\n";
-                        Console.WriteLine(s_USBdevicesLog += ("Name ：" + n.name.ToString() + "\r\n\r\n"));
+                        Console.WriteLine(s_USBdevicesLog += ("Name ：" + n.name.ToString() + "\r\n"));
                     }
                 }
                 #endregion
@@ -142,15 +143,16 @@ namespace CollectDataAP
                 double timeStamp = DateTime.UtcNow.AddHours(8).Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
                 DateTime gtm = (new DateTime(1970, 1, 1)).AddSeconds(Convert.ToInt32(timeStamp));
 
+                s_USBdevicesLog += "\r\nPlug and play(PnP) manager:\r\n";
                 for (int i = 0; i < Name.Count; i++)
                     /*textBox1.Text += "Name ：" + Name[i] + "\r\n" +
                                         "Vendor ID ： " + VendorID[i] + "\r\n" +
                                         "Product ID ： " + ProductID[i] + "\r\n\r\n";*/
                     Console.WriteLine(s_USBdevicesLog += ("Name ：" + Name[i] + "\r\n" +
                                         "Vendor ID ： " + VendorID[i] + "\r\n" +
-                                        "Product ID ： " + ProductID[i] + "\r\n\r\n"));
+                                        "Product ID ： " + ProductID[i] + "\r\n"));
 
-
+                s_USBdevicesLog += "\r\nSerial ports:\r\n";
                 for (int j = 0; j < ports.Length; j++)
                     //textBox1.Text += ports[j] + "\r\n";
                     Console.WriteLine(s_USBdevicesLog += (ports[j] + "\r\n"));
@@ -159,22 +161,24 @@ namespace CollectDataAP
                 textBox1.Text += gtm + " the USB Devices total ：" + Name.Count + "\r\n\r\n";
                 textBox1.Text += gtm + " the COM Devices total :  " + ports.Length + "\r\n\r\n";
                 textBox1.Text += "--------------------------------------------------------------------\r\n";*/
-                Console.WriteLine(s_USBdevicesLog += (gtm + " the RF Devices total ：" + RFcount + "\r\n\r\n"));
-                Console.WriteLine(s_USBdevicesLog += (gtm + " the USB Devices total ：" + Name.Count + "\r\n\r\n"));
-                Console.WriteLine(s_USBdevicesLog += (gtm + " the COM Devices total :  " + ports.Length + "\r\n\r\n"));
-                Console.WriteLine(s_USBdevicesLog += ("--------------------------------------------------------------------\r\n"));
+                s_USBdevicesLog += "\r\nTotal count:\r\n";
+                Console.WriteLine(s_USBdevicesLog += (gtm + " the RF Devices total ：" + RFcount + "\r\n"));
+                Console.WriteLine(s_USBdevicesLog += (gtm + " the USB Devices total ：" + Name.Count + "\r\n"));
+                Console.WriteLine(s_USBdevicesLog += (gtm + " the COM Devices total :  " + ports.Length + "\r\n"));
+                Console.WriteLine("--------------------------------------------------------------------\r\n\r\n");
                 // Get the directories currently on the C drive.
                 //DirectoryInfo[] cDirs = new DirectoryInfo(@"c:\").GetDirectories();
-
+                /*
                 using (FileStream fs = new FileStream("C:\\Users\\" + Environment.UserName + "\\Desktop\\USBdevicesFullLog.txt", FileMode.Append))
                 {
                     // Write each directory name to a file.
                     using (StreamWriter sw = new StreamWriter(fs))
                     {
                         sw.WriteLine(s_USBdevicesLog);
+                        sw.WriteLine("--------------------------------------------------------------------\r\n\r\n");
                         sw.Close();
                     }
-                }
+                }*/
                 using (FileStream fs = new FileStream("C:\\Users\\" + Environment.UserName + "\\Desktop\\USBdevicesFullLog.txt", FileMode.Append))
                 {
                     // Write each directory name to a file.

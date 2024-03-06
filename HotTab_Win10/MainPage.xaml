@@ -19,8 +19,15 @@
         <TextBox x:Name="ans_textBox" HorizontalAlignment="Left" Margin="733,45,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Height="100" Visibility="Collapsed"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="502,227,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"/>
 
+        <!--<ScrollViewer>
+            <TextBlock  x:Name="data_textBlock" Margin="122,89,0,0" Text="" TextWrapping="Wrap" Width="186" Height="310" AllowDrop="True" IsTextSelectionEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
+        </ScrollViewer>-->
+        <TextBox  x:Name="PnPmanager_textBlock" Margin="10,10,0,0" Text="" TextWrapping="Wrap" Width="185" AllowDrop="True"  HorizontalAlignment="Left" Height="232" VerticalAlignment="Top" IsReadOnly="True"/>
+        <TextBox  x:Name="USB_textBlock" Margin="210,10,0,0" Text="" TextWrapping="Wrap" Width="340" Height="486" AllowDrop="True" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"/>
+        <TextBox  x:Name="ComPorts_textBlock" Margin="565,10,0,0" Text="" TextWrapping="Wrap" AllowDrop="True" Height="250" VerticalAlignment="Top" HorizontalAlignment="Left" Width="186" IsReadOnly="True"/>
+        <TextBox  x:Name="TotalCount_textBlock" Margin="565,280,0,0" Text="" TextWrapping="Wrap" Width="186" Height="220" AllowDrop="True" HorizontalAlignment="Left" VerticalAlignment="Top" IsReadOnly="True"/>
 
-        <TextBlock x:Name="data_textBlock" HorizontalAlignment="Left" Margin="122,89,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button x:Name="refresh_btn" Content="Refrash" Margin="35,85,0,0" VerticalAlignment="Top" Click="refresh_btn_Click"/>
+
+        <Button x:Name="refresh_btn" Content="Refrash" Margin="7,320,0,0" VerticalAlignment="Top" Click="refresh_btn_Click" Height="111" Width="188" FontSize="48"/>
     </Grid>
 </Page>
