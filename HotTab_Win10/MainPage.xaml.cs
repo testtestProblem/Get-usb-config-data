@@ -29,6 +29,7 @@ namespace HotTab_Win10
     {
         int rfDevice = 0, usbDevice = 0, comDevice = 0;
         int rfDevice2 = 0, usbDevice2 = 0, comDevice2 = 0;
+        int errorCount = 0;
         public MainPage()
         {
             this.InitializeComponent();
@@ -218,7 +219,11 @@ namespace HotTab_Win10
 
                 TotalCount_textBlock.Text = data[3];
 
-                if(errorFlag==1) errorLog_textBox1.Text += data[3];
+                if (errorFlag == 1) {
+                    errorCount++;
+                    errorLog_textBox1.Text += data[3];
+                    countError_textBox.Text = "Error times: " + errorCount;
+                }
             }
         }
         private void refresh_btn_Click(object sender, RoutedEventArgs e)

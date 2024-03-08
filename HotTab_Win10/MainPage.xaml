@@ -34,8 +34,8 @@
         <CheckBox x:Name="usb_checkBox" Content="USB Devicd" Margin="15,410,0,0" VerticalAlignment="Top" FontSize="20" IsChecked="True"/>
         <CheckBox x:Name="com_checkBox" Content="COM Devicd" Margin="15,440,0,0" VerticalAlignment="Top" FontSize="20" IsChecked="True"/>
 
-        <TextBlock x:Name="recordError_textBox_Copy" HorizontalAlignment="Center" Margin="0,6,0,0" Text="Error Log" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" />
+        <TextBlock x:Name="recordError_textBox" HorizontalAlignment="Left" Margin="710,6,0,0" Text="Error Log" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" />
         <TextBox x:Name="errorLog_textBox1" HorizontalAlignment="Left" Margin="712,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="442" Width="127"/>
-        <TextBlock x:Name="countError_textBox_Copy1" HorizontalAlignment="Left" Margin="710,25,0,0" Text="Error times: 0" TextWrapping="Wrap" Width="125" Height="19" VerticalAlignment="Top" />
+        <TextBlock x:Name="countError_textBox" HorizontalAlignment="Left" Margin="710,25,0,0" Text="Error times: 0" TextWrapping="Wrap" Width="125" Height="19" VerticalAlignment="Top" />
     </Grid>
 </Page>
