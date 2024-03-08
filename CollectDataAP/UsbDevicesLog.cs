@@ -15,6 +15,9 @@ namespace CollectDataAP
         public static string s_USBdevicesLog = "";
         private static string USBKey = null;
 
+        private static int rfDevice = 0, usbDevice = 0, comDevice = 0;
+        private static int rfDevice2 = 0, usbDevice2 = 0, comDevice2 = 0;
+        private static int errorCount = 0, firstRun = 1;
         public void getUSBdevicesLog()
         {
             string DeviceIDTemp = null, name, temp = null;
@@ -22,8 +25,10 @@ namespace CollectDataAP
             List<string> ProductID = new List<string>();
             List<string> Name = new List<string>();
 
-            //textBox1.Text = "";
-            s_USBdevicesLog = "";
+            
+
+             //textBox1.Text = "";
+             s_USBdevicesLog = "";
             string[] ports = SerialPort.GetPortNames();
             try
             {
@@ -168,7 +173,7 @@ namespace CollectDataAP
                 Console.WriteLine("--------------------------------------------------------------------\r\n\r\n");
                 // Get the directories currently on the C drive.
                 //DirectoryInfo[] cDirs = new DirectoryInfo(@"c:\").GetDirectories();
-                /*
+                
                 using (FileStream fs = new FileStream("C:\\Users\\" + Environment.UserName + "\\Desktop\\USBdevicesFullLog.txt", FileMode.Append))
                 {
                     // Write each directory name to a file.
@@ -178,25 +183,45 @@ namespace CollectDataAP
                         sw.WriteLine("--------------------------------------------------------------------\r\n\r\n");
                         sw.Close();
                     }
-                }*/
-                using (FileStream fs = new FileStream("C:\\Users\\" + Environment.UserName + "\\Desktop\\USBdevicesFullLog.txt", FileMode.Append))
+                }
+                using (FileStream fs = new FileStream("C:\\Users\\" + Environment.UserName + "\\Desktop\\USBdevicesLiteLog.txt", FileMode.Append))
                 {
                     // Write each directory name to a file.
                     using (StreamWriter sw = new StreamWriter(fs))
                     {
-                        sw.WriteLine(gtm + " the RF Devices total ：" + RFcount);
-                        sw.WriteLine(gtm + " the USB Devices total ：" + Name.Count);
-                        sw.WriteLine(gtm + " the COM Devices total ：" + ports.Length);
+                        sw.WriteLine(gtm + " the RF Devices total:  " + RFcount);
+                        sw.WriteLine(gtm + " the USB Devices total:  " + Name.Count);
+                        sw.WriteLine(gtm + " the COM Devices total:  " + ports.Length);
                         sw.WriteLine("-------------------------------------------------------------\r\n");
                         sw.Close();
                     }
+                }
+
+                if (firstRun == 0 && (rfDevice != RFcount || usbDevice != Name.Count || comDevice != ports.Length))
+                {
+                    using (FileStream fs = new FileStream("C:\\Users\\" + Environment.UserName + "\\Desktop\\USBdevicesErrorLog.txt", FileMode.Append))
+                    {
+                        // Write each directory name to a file.
+                        using (StreamWriter sw = new StreamWriter(fs))
+                        {
+                            sw.WriteLine(s_USBdevicesLog);
+                            sw.WriteLine("-------------------------------------------------------------\r\n");
+                            sw.Close();
+                        }
+                    }
+                }
+                if (firstRun == 1)
+                {
+                    rfDevice = RFcount;
+                    usbDevice = Name.Count;
+                    comDevice = ports.Length;
+                    firstRun = 0;
                 }
             }
             catch (ManagementException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private static string check(string source)
@@ -216,7 +241,6 @@ namespace CollectDataAP
                             USBKey += source + ",";                    //串接USBKey
                             return "USB";
                         }
-
                     }
 
                     if (USB_or_SD_DevID.Substring(0, USB_or_SD_DevID.IndexOf("\\")).IndexOf("SD") != -1)
@@ -229,9 +253,7 @@ namespace CollectDataAP
                         }
 
                     }
-
                 }
-
             }
             catch (Exception ex)
             {
