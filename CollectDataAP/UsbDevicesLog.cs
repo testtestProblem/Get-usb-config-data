@@ -162,9 +162,9 @@ namespace CollectDataAP
                 textBox1.Text += gtm + " the COM Devices total :  " + ports.Length + "\r\n\r\n";
                 textBox1.Text += "--------------------------------------------------------------------\r\n";*/
                 s_USBdevicesLog += "\r\nTotal count:\r\n";
-                Console.WriteLine(s_USBdevicesLog += (gtm + " the RF Devices total ：" + RFcount + "\r\n"));
-                Console.WriteLine(s_USBdevicesLog += (gtm + " the USB Devices total ：" + Name.Count + "\r\n"));
-                Console.WriteLine(s_USBdevicesLog += (gtm + " the COM Devices total :  " + ports.Length + "\r\n"));
+                Console.WriteLine(s_USBdevicesLog += (gtm + " the RF Devices total:  " + RFcount + "  \r\n"));
+                Console.WriteLine(s_USBdevicesLog += (gtm + " the USB Devices total:  " + Name.Count + "  \r\n"));
+                Console.WriteLine(s_USBdevicesLog += (gtm + " the COM Devices total:  " + ports.Length + "  \r\n"));
                 Console.WriteLine("--------------------------------------------------------------------\r\n\r\n");
                 // Get the directories currently on the C drive.
                 //DirectoryInfo[] cDirs = new DirectoryInfo(@"c:\").GetDirectories();
@@ -292,8 +292,6 @@ namespace CollectDataAP
                         if (--count == 0)
                             return t.Substring(t.IndexOf("Name=") + 6, 1);
                 }
-
-
 
                 //      C_Check(count);
                 return "Error";

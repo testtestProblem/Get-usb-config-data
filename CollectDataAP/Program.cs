@@ -13,26 +13,29 @@ using Windows.ApplicationModel.AppService;
 using Windows.Foundation.Collections;
 using System.Threading;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace CollectDataAP
 {
     class Program
     {
-         static void Main(string[] args)
+        static Connect2UWP connect2UWP = new Connect2UWP();
+        static UsbDevicesLog usbDevicesLog = new UsbDevicesLog();
+
+        static void Main(string[] args)
         {
             string s_res;
 
-            Connect2UWP connect2UWP = new Connect2UWP();
-            UsbDevicesLog usbDevicesLog = new UsbDevicesLog();
-
             connect2UWP.InitializeAppServiceConnection();
-
             usbDevicesLog.getUSBdevicesLog();
 
             Console.WriteLine(UsbDevicesLog.s_USBdevicesLog);
             connect2UWP.Send2UWP(UsbDevicesLog.s_USBdevicesLog);
 
+            SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
+
             System.Windows.Forms.Application.Run();
+
             /*
             Console.WriteLine("[1] send data to UWP");
             
@@ -47,5 +50,12 @@ namespace CollectDataAP
             }*/
         }
 
+        static public void SystemEvents_PowerModeChanged(object sender, EventArgs e)
+        {
+            usbDevicesLog.getUSBdevicesLog();
+
+            Console.WriteLine(UsbDevicesLog.s_USBdevicesLog);
+            connect2UWP.Send2UWP(UsbDevicesLog.s_USBdevicesLog);        
+        }
     }
 }

@@ -27,6 +27,8 @@ namespace HotTab_Win10
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        int rfDevice = 0, usbDevice = 0, comDevice = 0;
+        int rfDevice2 = 0, usbDevice2 = 0, comDevice2 = 0;
         public MainPage()
         {
             this.InitializeComponent();
@@ -100,6 +102,12 @@ namespace HotTab_Win10
                 USB_textBlock.Text = data[1];
                 ComPorts_textBlock.Text = data[2];
                 TotalCount_textBlock.Text = data[3];
+                
+                string[] countDevice = data[3].Split("  ");
+
+                rfDevice = Int32.Parse(countDevice[1]);
+                usbDevice = Int32.Parse(countDevice[3]);
+                comDevice = Int32.Parse(countDevice[5]);
             });
         }
 
@@ -163,11 +171,54 @@ namespace HotTab_Win10
                 //data_textBlock.Text = (string)response.Message[key];
                 string responseData = (string)response.Message[key];
                 string[] data = responseData.Split("\r\n\r\n");
+                
+                string[] countDevice = data[3].Split("  ");
+                
+                int errorFlag = 0;
 
-                PnPmanager_textBlock.Text = data[0];
-                USB_textBlock.Text = data[1];
-                ComPorts_textBlock.Text = data[2];
+                rfDevice2 = Int32.Parse(countDevice[1]);
+                usbDevice2 = Int32.Parse(countDevice[3]);
+                comDevice2 = Int32.Parse(countDevice[5]);
+
+                if (rf_checkBox.IsChecked == true)
+                {
+                    PnPmanager_textBlock.Text = data[0];
+
+                    if (rfDevice != rfDevice2)
+                    {
+                        errorLog_textBox1.Text += data[0];
+                        errorFlag = 1;
+                    }
+                }
+                else PnPmanager_textBlock.Text = "";
+
+                if (usb_checkBox.IsChecked == true)
+                {
+                    USB_textBlock.Text = data[1];
+                    
+                    if (usbDevice != usbDevice2)
+                    {
+                        errorLog_textBox1.Text += data[1];
+                        errorFlag = 1;
+                    }
+                }
+                else USB_textBlock.Text = "";
+
+                if (com_checkBox.IsChecked == true)
+                {
+                    ComPorts_textBlock.Text = data[2];
+                    
+                    if (comDevice != comDevice2)
+                    {
+                        errorLog_textBox1.Text += data[2];
+                        errorFlag = 1;
+                    }
+                }
+                else ComPorts_textBlock.Text = "";
+
                 TotalCount_textBlock.Text = data[3];
+
+                if(errorFlag==1) errorLog_textBox1.Text += data[3];
             }
         }
         private void refresh_btn_Click(object sender, RoutedEventArgs e)
