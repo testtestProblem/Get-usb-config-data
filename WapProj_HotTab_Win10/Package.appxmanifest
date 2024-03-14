@@ -12,7 +12,7 @@
   <Identity
     Name="747e73e9-556f-4468-8093-8c898243ee87"
     Publisher="CN=TommyWE1914"
-    Version="1.0.5.0" />
+    Version="1.0.7.0" />
 
   <Properties>
     <DisplayName>WapProj_Device_Ports_Log</DisplayName>
