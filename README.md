@@ -5,7 +5,6 @@
 * Usually layout structure  
 Explicit	2	  
 The precise position of each member of an object in unmanaged memory is explicitly controlled, subject to the setting of the Pack field. Each member must use the FieldOffsetAttribute to indicate the position of that field within the type.   
-  
 Sequential	0	  
 The members of the object are laid out sequentially, in the order in which they appear when exported to unmanaged memory. The members are laid out according to the packing specified in Pack, and can be noncontiguous.  
 * Example code  
