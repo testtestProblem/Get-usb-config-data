@@ -55,7 +55,6 @@ namespace CollectDataAP
             else
                 Console.WriteLine("Successfully Registered for power notifications!");
 
-
             System.Windows.Forms.Application.Run();
 
             /*
@@ -83,7 +82,7 @@ namespace CollectDataAP
         private static int DeviceNotifyCallback(IntPtr context, int type, IntPtr setting)
         {
             Console.WriteLine("Device notify callback called: ");
-            usbDevicesLog.getUSBdevicesLog();
+            
 
             switch (type)
             {
@@ -96,6 +95,8 @@ namespace CollectDataAP
                     break;
 
                 case PBT_APMRESUMESUSPEND:
+                    usbDevicesLog.getUSBdevicesLog();
+
                     Console.WriteLine(UsbDevicesLog.s_USBdevicesLog);
                     connect2UWP.Send2UWP(UsbDevicesLog.s_USBdevicesLog);
                     Console.WriteLine("\tOperation is resuming from a low-power state.This message is sent after PBT_APMRESUMEAUTOMATIC if the resume is triggered by user input, such as pressing a key.");
