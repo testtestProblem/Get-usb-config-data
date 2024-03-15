@@ -2,7 +2,7 @@
 ![Untitled](https://github.com/testtestProblem/Get-usb-config-data/assets/107662393/32d95733-eadb-4474-b6a6-ea16f138ab32)
 
 # LayoutKind Enum(structure memery layout)
-*  Usually layout structure
+* Usually layout structure  
 Explicit	2	  
 The precise position of each member of an object in unmanaged memory is explicitly controlled, subject to the setting of the Pack field. Each member must use the FieldOffsetAttribute to indicate the position of that field within the type.   
   
