@@ -25,7 +25,18 @@ public struct Rect
    [FieldOffset(12)] public int bottom;
 }
 ```
-
-
+# Create txt file in desktop
+```C#
+using (FileStream fs = new FileStream("C:\\Users\\" + Environment.UserName + "\\Desktop\\USBdevicesFullLog.txt", FileMode.Append))
+                {
+                    // Write each directory name to a file.
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        sw.WriteLine(s_USBdevicesLog);
+                        sw.WriteLine("--------------------------------------------------------------------\r\n\r\n");
+                        sw.Close();
+                    }
+                }
+```
 # Detect Modern standby
 * Reference - https://blog.csdn.net/mochounv/article/details/114668594
